@@ -3,12 +3,13 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const app = express();
 const passport = require("passport");
+const cors = require("cors")
 const users = require("./routes/api/users");
 
 require("dotenv").config();
 
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
+app.use(cors());
+app.use(express.json());
 
 const db = process.env.ATLAS_URI;
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
